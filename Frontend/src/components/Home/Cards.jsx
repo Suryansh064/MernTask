@@ -27,7 +27,7 @@ const Cards = ({
         if (parentHandleComplete) return parentHandleComplete(id);
         try {
             await axios.put(
-                `https://merntask-3b8t.onrender.com`,
+                `https://merntask-3b8t.onrender.com/api/v2/updateCompleteTask/${id}`,
                 {},
                 { headers }
             );
@@ -40,7 +40,7 @@ const Cards = ({
         if (parentHandleImportant) return parentHandleImportant(id);
         try {
             await axios.put(
-                `https://merntask-3b8t.onrender.com`,
+                `https://merntask-3b8t.onrender.com/api/v2/updateImpTask/${id}`,
                 {},
                 { headers }
             );
@@ -54,7 +54,7 @@ const Cards = ({
         if (parentDeleteTask) return parentDeleteTask(id);
         try {
             await axios.delete(
-                `https://merntask-3b8t.onrender.com`,
+                `https://merntask-3b8t.onrender.com/api/v2/deleteTask/${id}`,
                 { headers }
             );
             if (refreshTasks) refreshTasks();
