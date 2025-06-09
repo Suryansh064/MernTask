@@ -18,7 +18,7 @@ const Signup = () => {
             alert("All Fields are Required");
         }else {
             try {
-                const response = await axios.post("http://localhost:5001/api/v1/Signup",Data);
+                const response = await axios.post("https://merntask-3b8t.onrender.com/api/v1/Signup",Data);
                 setData({username:"",email:"",password:""})
                 alert(response.data.message);
                 history("/Login");
