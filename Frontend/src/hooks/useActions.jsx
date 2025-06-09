@@ -24,7 +24,7 @@ const useActions = (fetchUrl) => {
     };
     try {
         await axios.put(
-        `http://localhost:5001/api/v2/updateCompleteTask/${id}`,
+        `https://merntask-3b8t.onrender.com/api/v2/updateCompleteTask/${id}`,
         {},
         { headers }
         );
@@ -41,7 +41,7 @@ const useActions = (fetchUrl) => {
     };
     try {
         await axios.put(
-        `http://localhost:5001/api/v2/updateImpTask/${id}`,
+        `https://merntask-3b8t.onrender.com/api/v2/updateImpTask/${id}`,
         {},
         { headers }
     );
@@ -58,7 +58,7 @@ const useActions = (fetchUrl) => {
     };
     try {
         await axios.delete(
-        `http://localhost:5001/api/v2/deleteTask/${id}`,
+        `https://merntask-3b8t.onrender.com/api/v2/deleteTask/${id}`,
         { headers }
         );
         fetchTasks();
