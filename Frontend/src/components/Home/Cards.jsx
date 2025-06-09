@@ -6,14 +6,17 @@ import { FaHeart } from "react-icons/fa";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import axios from "axios";
 
-const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks }) => {
+const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks ,  handleImportant: parentHandleImportant,
+    handleComplete: parentHandleComplete,
+    deleteTask: parentDeleteTask }) => {
     // Define headers once
     const headers = {
         id: localStorage.getItem("userId"),
         authorization: `Bearer ${localStorage.getItem("token")}`
     };
 
-    const handleComplete = async(id) => {
+    const handleComplete = async (id) => {
+        if (parentHandleComplete) return parentHandleComplete(id);
         try {
             await axios.put(
                 `http://localhost:5001/api/v2/updateCompleteTask/${id}`,
@@ -25,8 +28,8 @@ const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks }
             console.log(error);
         }
     };
-
-    const handleImportant = async(id, currentStatus) => {
+    const handleImportant = async (id) => {
+        if (parentHandleImportant) return parentHandleImportant(id);
         try {
             await axios.put(
                 `http://localhost:5001/api/v2/updateImpTask/${id}`,
@@ -39,7 +42,8 @@ const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks }
         }
     };
 
-    const DeleteTask = async(id) => {
+    const DeleteTask = async (id) => {
+        if (parentDeleteTask) return parentDeleteTask(id);
         try {
             await axios.delete(
                 `http://localhost:5001/api/v2/deleteTask/${id}`,
@@ -50,7 +54,6 @@ const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks }
             console.log(error);
         }
     };
-
     const updateTask = (id, title, desc) => {
         setInputDiv("fixed");
         setUpdatedData({ id, title, desc });
@@ -71,9 +74,9 @@ const Cards = ({home, setInputDiv, data, setData, setUpdatedData, refreshTasks }
                                 <button onClick={() => handleImportant(items._id, items.important)}>
                                     {items.important === false ? <CiHeart /> : <FaHeart />}
                                 </button>
-                                <button onClick={() => updateTask(items._id, items.title, items.desc)}>
+                                {home === "true" &&  <button onClick={() => updateTask(items._id, items.title, items.desc)}>
                                     <FaEdit />
-                                </button>
+                                </button>}
                                 <button onClick={() => DeleteTask(items._id)}>
                                     <MdDelete />
                                 </button>

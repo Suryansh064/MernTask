@@ -3,6 +3,8 @@ const router = express.Router();
 import Task from "../models/task.js";
 import User from "../models/user.js";
 import authenticateToken from "./auth.js";
+
+// Done 
 router.post("/createTask",authenticateToken,async (req ,res)=>{
     try {
         const {title ,desc}= req.body;
@@ -18,6 +20,7 @@ router.post("/createTask",authenticateToken,async (req ,res)=>{
     }
 })
 
+// Done
 router.get("/getallTask", authenticateToken,async(req,res)=>{
     try {
         const id = req.user.id;
@@ -32,7 +35,7 @@ router.get("/getallTask", authenticateToken,async(req,res)=>{
     }
 })
 
-
+// Done
 router.delete("/deleteTask/:id", authenticateToken, async(req,res)=>{
     try {
         const {id} = req.params;

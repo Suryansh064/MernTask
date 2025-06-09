@@ -48,23 +48,44 @@ const InputData = ({InputDiv,setInputDiv ,updatedData ,refreshTasks}) => {
     <div className={`${InputDiv} fixed bg-gray-700 top-0 left-0 opacity-80 h-screen w-full `}>
     </div>
     <form onSubmit={handlesSubmit} className={`${InputDiv}  top-0 left-0 fixed flex items-center justify-center   h-screen w-full `}>
-        <div className='w-1/2 pt-20 flex flex-col  bg-slate-900 h-[50vh] p-3 rounded-4xl'>
-        <div className='flex justify-end mb-4 text-2xl mr-4 '>
-            <button className='cursor-pointer' onClick={()=>setInputDiv("hidden")}> <ImCross /></button>
-        </div>
 
-        <input type="text" placeholder='Enter Title :' name="title" className='rounded-md    bg-gray-700  p-2 w-full'
-        value = {Data.title}
+<div className='w-1/2 pt-20 flex flex-col bg-slate-900 h-[50vh] p-3 rounded-4xl relative'>
+    <div className='flex justify-center items-center mb-6 relative'>
+        <h1 className='text-5xl font-bold text-blue-500 mx-auto'>{updatedData && updatedData.id ? "Update" : "New"} Task</h1>
+        <button
+            className='cursor-pointer text-2xl absolute right-0'
+            onClick={() => setInputDiv("hidden")}
+        >
+            <ImCross />
+        </button>
+    </div>
+    <input
+        type="text"
+        placeholder='Enter Title :'
+        name="title"
+        className='rounded-md bg-gray-700 p-2 w-full'
+        value={Data.title}
         onChange={change}
-        />
-        <textarea name="desc" cols="30" rows ="10" id="desc" className='rounded-md mt-2 w-full bg-gray-700 p-2 ' 
-        value = {Data.desc}
+    />
+    <textarea
+        name="desc"
+        cols="30"
+        rows="10"
+        id="desc"
+        className='rounded-md mt-2 w-full bg-gray-700 p-2'
+        value={Data.desc}
         onChange={change}
-        placeholder='Enter Description : '></textarea>
-
-        <button type='submit' className='bg-blue-500 flex justify-center mt-3 ml-50 items-center w-1/2 rounded-4xl p-4 '  
-        >Submit</button>
-        </div>
+        placeholder='Enter Description : '
+    ></textarea>
+    <div className='flex flex-row gap-4 mt-3'>
+        <button
+            type='submit'
+            className='bg-blue-500 flex justify-center items-center w-full rounded-4xl p-4 m-6 font-semibold text-white hover:bg-blue-600 transition'
+        >
+            {updatedData && updatedData.id ? "Update" : "Submit"}
+        </button>
+    </div>
+</div>
     </form>
     </>
     )
