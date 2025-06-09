@@ -1,38 +1,76 @@
+// import React, { useEffect } from "react";
+// import Cards from "../components/Home/Cards";
+// import useActions from "../hooks/useActions.jsx";
+
+// const Incomplete = () => {
+//     const {
+//     Data,
+//     fetchTasks,
+//     handleComplete,
+//     handleImportant,
+//     deleteTask,
+//     } = useActions("http://localhost:5001/api/v2/getInCompleteTask");
+
+//     useEffect(() => {
+//     fetchTasks();
+//     }, []);
+
+//     return (
+//         <div className="min-h-screen">
+//         <div className="flex justify-center items-center mb-4">
+//             <h1 className="text-6xl font-bold text-red-700  underline mb-4 text-center">InCompleted Tasks</h1>
+//         </div>
+//         <div >
+//             <Cards
+//                 home={"false"}
+//                 data={Data}
+//                 handleImportant={handleImportant}
+//                 handleComplete={handleComplete}
+//                 deleteTask={deleteTask}
+//             />
+//         </div>
+//     </div>
+    
+// );
+// };
+
+// export default Incomplete;
+
 import React, { useEffect } from "react";
 import Cards from "../components/Home/Cards";
 import useActions from "../hooks/useActions.jsx";
 
 const Incomplete = () => {
     const {
-    Data,
-    fetchTasks,
-    handleComplete,
-    handleImportant,
-    deleteTask,
+        Data,
+        fetchTasks,
+        handleComplete,
+        handleImportant,
+        deleteTask,
     } = useActions("http://localhost:5001/api/v2/getInCompleteTask");
 
     useEffect(() => {
-    fetchTasks();
+        fetchTasks();
     }, []);
 
     return (
-        <div className="min-h-screen">
-        <div className="flex justify-center items-center mb-4">
-            <h1 className="text-6xl font-bold text-red-700  underline mb-4 text-center">InCompleted Tasks</h1>
+        <div className="min-h-screen bg-gray-900 px-2 sm:px-4 md:px-8">
+            <div className="flex flex-col items-center justify-center my-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-red-700 underline mb-6 text-center">
+                    InCompleted Tasks
+                </h1>
+            </div>
+            <div className="w-full max-w-5xl mx-auto">
+                <Cards
+                    home={"false"}
+                    data={Data}
+                    handleImportant={handleImportant}
+                    handleComplete={handleComplete}
+                    deleteTask={deleteTask}
+                />
+            </div>
         </div>
-        <div >
-            <Cards
-                home={"false"}
-                data={Data}
-                handleImportant={handleImportant}
-                handleComplete={handleComplete}
-                deleteTask={deleteTask}
-            />
-        </div>
-    </div>
-    
-);
+    );
 };
 
 export default Incomplete;
-

@@ -18,8 +18,8 @@ A full-stack task manager application built using the **MERN** (MongoDB, Express
 ## 📁 Project Structure
 
 task-manager/
-├── client/ # React Frontend
-├── server/ # Express + MongoDB Backend
+├── Frontend/ # React Frontend
+├── Backend/ # Express + MongoDB Backend
 ├── README.md
 └── .gitignore
 
@@ -52,18 +52,11 @@ npm install
 Create a .env file inside the server directory with the following variables:
 
 
-PORT=5001
-MONGO_URL=
-JWT_SECRET=your_secret_key
+
 Run the backend server:
-
-
-npm run dev
+npm start
 💻 Frontend Setup
 
-
-
-cd client
 npm install
 npm run dev
 Make sure Axios requests match your backend base URL.
@@ -73,41 +66,20 @@ All routes require a valid JWT token in the Authorization header as:
 Authorization: Bearer <token>
 
 ✅ Auth
-POST /api/v2/register → Register a new user
+POST /api/v1/Signup → Register a new user
 
-POST /api/v2/login → Log in and receive JWT token
+POST /api/v1/login → Log in and receive JWT token
 
 📌 Tasks (Protected)
 POST /api/v2/createTask → Create new task
-
 GET /api/v2/getallTask → Get all tasks
-
 PUT /api/v2/updateTask/:id → Update task
-
 DELETE /api/v2/deleteTask/:id → Delete task
-
 PUT /api/v2/updateImpTask/:id → Toggle important
-
 PUT /api/v2/updateCompleteTask/:id → Toggle complete
-
 GET /api/v2/getImpTask → Get only important tasks
-
 GET /api/v2/getCompleteTask → Get completed tasks
-
 GET /api/v2/getInCompleteTask → Get incomplete tasks
-
-📸 Screenshots
-(Add screenshots of your UI here if available)
-
-🔒 Environment Variables
-📄 .env.example
-
-
-
-PORT=5001
-MONGO_URL=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-
 
 📄 .gitignore
 gitignore
@@ -118,15 +90,13 @@ node_modules/
 dist/
 build/
 .DS_Store
+
 🙌 Contribution
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-📜 License
-This project is licensed under the MIT License.
 
 
 
-Let me know if you want this saved to a downloadable file or want to include **screenshots or badges** (like GitHub stars, forks, etc.).
 
 
 

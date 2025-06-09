@@ -20,7 +20,7 @@ function App() {
     else if(isLoggedIn==false) Navigate("/Login");
   },[])
   return (
-      <div className="bg-slate-800  text-white h-screen relative">
+      <div className="bg-slate-800 text-white min-h-screen relative px-2 sm:px-4 md:px-8">
           <Routes>
             <Route exact path = "/" element ={ <Home/>}>
               <Route index element = {<AllTasks/>}></Route>
